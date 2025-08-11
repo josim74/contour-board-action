@@ -1,5 +1,11 @@
 name: contour action
-on: workflow_dispatch
+on: 
+  workflow_dispatch:
+    inputs:
+      deploy-to-eks:
+        type: boolean
+        required: false
+        default: false
 
 env:
   AWS_REGION: us-east-1
@@ -83,6 +89,7 @@ jobs:
   Deploy_To_EKS:
     needs: Build_And_Publish
     runs-on: ubuntu-latest
+    if: ${{ github.event.inputs.deploy-to-eks == 'true' }}
     steps:
       - name: Code checkout
         uses: actions/checkout@v4
