@@ -8,7 +8,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: goodwish.shop
+  - host: contour.goodwish.shop
     http:
       paths:
       - path: /
