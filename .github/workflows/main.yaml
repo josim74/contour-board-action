@@ -115,6 +115,7 @@ jobs:
             --docker-server=${{ secrets.REGISTRY }} \
             --docker-username=AWS \
             --docker-password=$(aws ecr get-login-password)
+            --dry-run=client -o yaml | kubectl apply -f -
 
       - name: Deploy Helm
         uses: bitovi/github-actions-deploy-eks-helm@v1.2.12
